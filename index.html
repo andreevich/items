@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+  body{
+	padding:5px;
+  }
+  sup{
+	color:grey;
+	font-weight: normal;
+	cursor:pointer;
+  }
+  .r{
+	color:red;
+  }
+  .g{
+	color:green;
+  }
+ 
+  </style>
+</head>
+
+<body>
+
+	<script type="text/x-handlebars" data-template-name="application">
+		<h1>Учёт финансов <sup>ascetic thema</sup></h1>
+		<hr/>
+		
+		<div>
+		{{#link-to 'lists'}}
+			Редактор списков
+		{{/link-to}}
+		 | 
+		{{#link-to 'prices'}}
+			Расходы
+		{{/link-to}}
+		|
+		{{#link-to 'test'}}
+			Статистика
+		{{/link-to}}
+		
+		</div>
+		<hr/>
+		{{outlet}}
+		
+		<br><hr/>
+		<p>тестовое приложение на EmberJS.</p>
+		
+	</script>
+	
+	<script type="text/x-handlebars" data-template-name="lists">
+		
+		<div class='panel'>
+		<ul>
+		{{#each controller itemController="list"}}
+		<li {{action "click"}}>
+			
+			{{listName}} <sup class='r'{{action "removeList"}}> rem</sup> | <sup class='g' {{action "addInput"}}>+sub</sup>
+			<ul>
+				 {{#each card in cards itemController="card"}}
+					
+					<li  {{action "getCard"}} >
+					{{card.description}}  <sup class='r' {{action "deleteCard" card}}> rem</sup> 
+					{{#if card.isAdding}}
+					isAdding
+					{{/if}}
+					</li>
+				{{/each}}
+				{{#if isAdding}}
+				<li>{{input size=4 type="text" value=cardDescription action="createCard" placeholder="sub"}}</li>
+				{{/if}}
+			</ul>
+		
+		</li>
+		{{/each}}
+		<br>
+		
+		<li>{{input type="text" value=listName action="createList"  placeholder="Новая категория"}}</li>
+		</ul>
+		</div>
+		
+	</script>
+	
+		
+	<script type="text/x-handlebars" data-template-name="prices">
+		<ul>
+		{{#each controller itemController="price"}}
+			<li>{{date}} - {{price}} - {{card}}</li>
+		{{/each}}	
+			<li>{{view "select"
+				   content=names 
+				   optionValuePath="content.id"
+				   optionLabelPath="content.firstName"
+					}}
+			- {{input type="text" value=date placeholder="дата"}}
+			- {{input type="text" value=price placeholder="стоимость"}}
+			 <button {{action 'createPrice'}}>Добавить</button>
+			
+			</li>
+		</ul>
+	</script>	
+		
+
+
+	
+	
+	
+	<script type="text/x-handlebars" data-template-name="test">
+		{{a}}<br>
+		{{b}}		
+	</script>
+
+  <script src="js/libs/jquery.min.js"></script>
+  <script src="js/libs/handlebars-v1.3.0.js"></script>
+  <script src="js/libs/ember-1.8.1.js"></script>
+<!-- <script src="js/libs/ember-data-v1.0.0-beta.11.js"></script> -->
+  <script src="js/libs/ember-data.js"></script>
+  <script src="js/libs/localstorage_adapter.js"></script>
+  
+  <script src="js/app.js"></script>
+  <script src="js/router.js"></script>
+ 
+  <script src="js/routes/lists-route.js"></script>
+  <script src="js/routes/prices-route.js"></script>
+  
+  <script src="js/models/list.js"></script>
+  <script src="js/models/card.js"></script>
+  <script src="js/models/price.js"></script>
+  
+  <script src="js/controllers/lists-controller.js"></script>
+  <script src="js/controllers/list-controller.js"></script>
+  <script src="js/controllers/card-controller.js"></script>
+  <script src="js/controllers/prices-controller.js"></script>
+  <script src="js/controllers/price-controller.js"></script>
+  <script src="js/controllers/tests-controller.js"></script>
+
+</body>
+
+
+</html>
