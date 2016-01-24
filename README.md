@@ -1,6 +1,7 @@
 # items
-emberjs test simple app
+emberjs-cli test simple app
 
+##Переходим на cli
 ##Watch on Youtube
 
-[![emberjs](http://img.youtube.com/vi/GtIWvpkkVmM/0.jpg)](https://www.youtube.com/watch?v=GtIWvpkkVmM)
+[![emberjs](http://img.youtube.com/vi/Ycvc7UNYNhY/0.jpg)](https://www.youtube.com/watch?v=Ycvc7UNYNhY)
