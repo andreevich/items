@@ -1,0 +1,18 @@
+<h1>Диаграмма превышения лимитов ({{model.limit}}руб.)</h1>
+<div>
+	<span class='red_limit'>2Х ЛИМИТ: {{model.limit2}}руб.</span>
+	<span class='_limit'>ЛИМИТ: {{model.limit}}руб.</span>
+	<span class='no_limit'>НОРМА</span>
+</div>
+<br/>
+<div class="chart">
+  {{#each price in model.price}}
+		{{#if price.minWidth}}
+	<div {{bind-attr style=price.myStyle class=price.redPrice}}>{{price.name}} - <b>{{price.price}}руб.</b></div>
+		{{else}}
+	<div {{bind-attr style=price.myStyle class=price.redPrice}}>{{price.name}} - {{ format-date price.date "YYYY-MM-DD"}} - <b>{{price.price}}руб.</b></div>
+
+		{{/if}}
+		
+	{{/each}}
+</div>

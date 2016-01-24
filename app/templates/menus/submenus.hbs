@@ -1,0 +1,29 @@
+<h4>Подменю {{model.sumbenu.length}}</h4>
+{{#if model.submenu.length}} 
+<table>
+	{{#each model.submenu as |sub| }}
+		<tr>
+			<td>•</td><td> {{sub.name}}<sup>{{sub.name2}}</sup></td> <td> <span class="label label-danger"  {{action 'deleteSubMenu' sub.id}}> del </span></td>
+		</tr>	
+	{{/each}}
+</table>
+{{else}}
+<div class="alert alert-warning" role="alert">
+	<strong>Внимание!</strong> Подменю пустое, срочно примите меры по наполнению!
+</div>
+{{/if}}
+
+<form class="form-inline">
+	<div class="form-group">
+		<div class="form-group">
+		  <select ng-model='discussionsSelect' class='form-control createsub' value=name>
+       		{{#each model.menu as |menu| }}
+           	 <option value={{menu.id}}>{{menu.name}}</option>
+            {{/each}}
+          </select>
+		</div>
+		{{input type="text" class="form-control" value=name}}
+		<button {{action 'addSubmenu'}} class="btn btn-primary">Добавить</button>
+	</div>
+</form>
+

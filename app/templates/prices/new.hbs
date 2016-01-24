@@ -1,0 +1,19 @@
+<form class="form-inline">
+	<div class="form-group">
+		<div class="form-group">
+		  <select ng-model='discussionsSelect' class='form-control' value=name>
+            {{#each item in model}}
+           	 <option>{{item.name}}</option>
+            {{/each}}
+          </select>
+		</div>
+
+		{{input type="date" class="form-control" value=date}}
+		<div class="input-group">
+    		{{input type="text" class="form-control" value=price placeholder="Стоимость"}}
+			<span class="input-group-addon">бел.руб</span>
+		</div>
+    	<button {{action 'ddPrice'}} class="btn btn-primary">Добавить</button>
+	</div>
+
+</form>

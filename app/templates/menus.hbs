@@ -1,0 +1,23 @@
+<h1>Меню</h1>
+<h4>{{#link-to 'menus.new'}}Добавить меню{{/link-to}}</h4>
+{{!--
+<h4>{{#link-to 'menus.submenus'}}Добавить ПОДменю{{/link-to}}</h4>
+--}}
+<br/>
+
+{{#if model.length}}
+	<table>
+	{{#each model as |m| }}
+		<tr>
+			<td> • </td> <td> {{m.name}}</td> <td> <span class="label label-danger"  {{action 'deleteMenu' m.id}}> del </span></td>
+		</tr>	
+	{{/each}}
+	</table>
+{{else}}
+<div class="alert alert-warning" role="alert">
+	<strong>Внимание!</strong> Меню пустое, срочно примите меры по наполнению!
+</div>
+{{/if}}
+
+<br/>
+{{outlet}}

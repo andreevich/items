@@ -1,0 +1,27 @@
+.no_limit,.red_limit,._limit{
+	padding: 3px;
+	color: white;
+	margin-right: 5px;
+}
+.chart div {
+  font: 10px sans-serif;
+  background-color: green;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+.chart div.red, .red_limit{
+	background-color: red;
+}
+.chart div.orange,._limit{
+	background-color: darkorange;
+}
+.no_limit{
+	background-color: green;
+}
+.label-danger{
+	cursor:pointer;
+	margin-left: 5px;
+	margin-bottom: 5px; 
+}

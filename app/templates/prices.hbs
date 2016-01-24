@@ -1,0 +1,36 @@
+
+<h1>Расходы</h1>
+
+{{#if model.length}}
+<table class="table">
+<caption>Расходы:  <span class="badge">{{model.length}}</span></caption>
+<thead>
+	<tr>
+		<th>#</th>
+		<th>Наименование</th>
+		<th>Стоимость</th>
+		<th>Дата совершения</th>
+		<th>Дата создания</th>
+		<th></th>
+	</tr>
+</thead>
+<tbody>
+	{{#each model as |price index|}}
+		<tr>
+			<td>{{index}}</td>
+			<td>{{price.name}}</td>
+			<td>{{price.price}}</td>
+			<td>{{format-date price.date "YYYY-MM-DD"}}</td>
+			<td>{{format-date price.created "YYYY-MM-DD hh:mm:ss"}}</td>
+			<td><button {{action 'deletePrice' price.id}} type="submit" class="btn btn-danger btn-xs">Удалить</button></td>
+		</tr>
+	{{/each}}
+</tbody>
+</table>
+{{else}}
+<div class="alert alert-warning" role="alert">
+	<strong>Внимание!</strong> База пуста, срочно примите меры по наполнению!
+</div>
+{{/if}}
+	
+{{outlet}}
