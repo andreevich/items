@@ -28,9 +28,7 @@
 </tbody>
 </table>
 {{else}}
-<div class="alert alert-warning" role="alert">
-	<strong>Внимание!</strong> База пуста, срочно примите меры по наполнению!
-</div>
+	{{alert-panel title="Внимание!" body="База пуста, срочно примите меры по наполнению!"}}
 {{/if}}
 	
 {{outlet}}
